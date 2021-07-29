@@ -12,7 +12,7 @@ use app\models\User;
 use yii\data\ActiveDataProvider;
 
 
-class AdminController extends BehaviorsController
+class AdminController extends Controller
 {
 
     public $layout = 'admin';
@@ -94,7 +94,7 @@ class AdminController extends BehaviorsController
     public function actionBlock()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Messages::find()->where(['status' => 1]),
+            'query' => Messages::find()->where(['status' => Messages::BLOCK_ON]),
         ]);
 
         return $this->render('block', [
@@ -118,5 +118,18 @@ class AdminController extends BehaviorsController
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionStatus($id, $status)
+    {
+        $model = Messages::find()->where(['id' => $id])->one();
+        if($status == 0){
+            $model->status = 1;
+        }else{
+            $model->status = 0;
+        }
+        $model->save();
+
+        return $this->goBack();
     }
 }

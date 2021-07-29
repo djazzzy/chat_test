@@ -26,13 +26,14 @@ $this->title = 'Сообщения';
             <?php else: ?>
                 <div class="message-wrap">
             <?php endif; ?>
-                    <div class="message-author"><?=$mess->user->username;?></div>
-                    <div class="message-text"><?=$mess->text;?></div>
+                    <div class="message-author"><?= Html::encode($mess->user->username);?></div>
+                    <div class="message-text"><?= Html::encode($mess->text) ;?></div>
+<!--                    <div class="message-text">--><?//= \yii\helpers\HtmlPurifier::process($mess->text) ;?><!--</div>-->
                     <div class="message-date"><?=date("d.m.Y H:i", strtotime($mess->date))?></div>
                     <?php if($mess->status == 0 && Yii::$app->user->can('admin')): ?>
-                    <a href="<?=Url::toRoute(['site/mblock', 'id' => $mess->id]) ?>" class="message-date">Блокировать</a>
+                    <a href="<?=Url::toRoute(['admin/status', 'id' => $mess->id, 'status' => 0]) ?>" class="message-date">Блокировать</a>
                     <?php elseif($mess->status == 1 && Yii::$app->user->can('admin')): ?>
-                    <a href="<?=Url::toRoute(['site/munblock', 'id' => $mess->id]) ?>" class="message-date">Разблокировать</a>
+                    <a href="<?=Url::toRoute(['admin/status', 'id' => $mess->id, 'status' => 1]) ?>" class="message-date">Разблокировать</a>
                     <?php endif; ?>
                 </div>
         <?php endforeach; ?>

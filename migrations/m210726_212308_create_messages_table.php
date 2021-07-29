@@ -19,7 +19,18 @@ class m210726_212308_create_messages_table extends Migration
             'date' => $this->dateTime()->defaultExpression('CURRENT_TIMESTAMP'),
             'status' => $this->integer()->defaultValue(0),
         ]);
+
+        $this->addForeignKey(
+            'fk-message-user_id',
+            'messages',
+            'user_id',
+            'users',
+            'id',
+            'RESTRICT'
+        );
     }
+
+
 
     /**
      * {@inheritdoc}

@@ -54,7 +54,7 @@ $user_active = Yii::$app->user->identity->status == 10 ? 'Подтвержен' 
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Выйти (' . Yii::$app->user->identity->username . ') ',
+                    'Выйти (' . Html::encode(Yii::$app->user->identity->username) . ') ',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()

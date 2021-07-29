@@ -19,7 +19,6 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $updated_at
  * @property string $secret_key
  *
- * @property Profile $profile
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
@@ -74,12 +73,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'created_at' => 'Дата создания',
             'updated_at' => 'Дата изменения',
         ];
-    }
-
-    /* Связи */
-    public function getProfile()
-    {
-        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
     }
 
     /* Поведения */

@@ -13,7 +13,7 @@ use app\models\Messages;
 use app\models\User;
 
 
-class SiteController extends BehaviorsController
+class SiteController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -135,19 +135,5 @@ class SiteController extends BehaviorsController
         ]);
     }
 
-    public function actionMblock($id)
-    {
-        $model = Messages::find()->where(['id' => $id])->one();
-        $model->status = 1;
-        $model->save();
-        return $this->goBack();
-    }
 
-    public function actionMunblock($id)
-    {
-        $model = Messages::find()->where(['id' => $id])->one();
-        $model->status = 0;
-        $model->save();
-        return $this->goBack();
-    }
 }
