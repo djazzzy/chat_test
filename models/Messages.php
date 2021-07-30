@@ -19,6 +19,11 @@ class Messages extends \yii\db\ActiveRecord
     const BLOCK_OFF = 0;
     const BLOCK_ON = 1;
 
+    public static $mess_status = array(
+        '0' => 'Разблокировано',
+        '1' => 'Заблокировано',
+    );
+
     public static function tableName()
     {
         return 'messages';

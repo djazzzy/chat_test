@@ -197,3 +197,24 @@ a.desc:after {
     width: 750px;
     display: block;
 }
+
+.message-block{
+    margin-bottom: 10px;
+    border-radius: 50px;
+    padding: 3px 10px;
+    font-size: 12px;
+    margin-left: auto;
+    background: #ffffff;
+    margin-top: 10px;
+    -webkit-transition: all 0.5s ease;
+}
+
+.message-block:hover{
+    background: #909090;
+    text-decoration: none;
+    -webkit-transition: all 0.5s ease;
+}
+
+.message-block:active{
+    text-decoration: none;
+}
