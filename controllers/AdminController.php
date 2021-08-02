@@ -123,8 +123,8 @@ class AdminController extends Controller
     public function actionStatus($id, $status)
     {
         $model = Messages::find()->where(['id' => $id])->one();
-        $getStatus = Messages::$mess_status[$status];
-        if($getStatus) {
+        $getStatus = Messages::$mess_status;
+        if(array_key_exists($status , $getStatus)) {
             $model->status = $status;
         }else{
             Yii::$app->session->setFlash('status-error', "Передан неверный статус сообщения");

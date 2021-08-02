@@ -27,9 +27,10 @@ class m210730_133537_change_messages_table extends Migration
      */
     public function safeDown()
     {
-        echo "m210730_133537_change_messages_table cannot be reverted.\n";
-
-        return false;
+        $this->dropForeignKey(
+            'fk-message-user_id',
+            'messages'
+        );
     }
 
     /*
