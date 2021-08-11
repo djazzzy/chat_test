@@ -37,6 +37,7 @@ class Messages extends \yii\db\ActiveRecord
         return [
             [['user_id', 'text'], 'required'],
             [['date'], 'safe'],
+            [['time'], 'number', 'min' => 0.1, 'max' => 10 , 'numberPattern' => '/^\s*[-+]?[0-9]*[.,]?[0-9]+([eE][-+]?[0-9]+)?\s*$/'],
             [['status','user_id'], 'integer'],
             [['text'], 'string', 'max' => 255],
         ];

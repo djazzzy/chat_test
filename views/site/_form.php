@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'text')->textInput(['maxlength' => true, 'class' => 'message-input'])->label('Ваше сообщение') ?>
 
-<!--    --><?//= $form->field($model, 'date')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'time')->textInput() ?>
 
 <!--    --><?//= $form->field($model, 'status')->textInput() ?>
 
